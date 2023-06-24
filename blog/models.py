@@ -61,6 +61,9 @@ class User(models.Model):
     def get_role_verbose_plural(self):
         return dict(User.ROLES)[self.role] + 's'
 
+    def get_posts(self):
+        return Post.objects.filter(author=self.id)
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100, help_text='Tag name')
