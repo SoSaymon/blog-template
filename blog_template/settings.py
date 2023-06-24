@@ -87,8 +87,17 @@ DATABASES = {
         'OPTIONS': {
             'charset': 'utf8mb4',
         },
-
-    }
+        'TEST': {
+            'NAME': get_env('TEST_DB_NAME', 'test_blog_template'),
+            'USER': get_env('TEST_DB_USER', 'root'),
+            'PASSWORD': get_env('TEST_DB_PASSWORD', ''),
+            'HOST': get_env('TEST_DB_HOST', 'localhost'),
+            'PORT': get_env('TEST_DB_PORT', '3306'),
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+            },
+        }
+    },
 }
 
 # Password validation
