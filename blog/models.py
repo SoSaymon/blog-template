@@ -109,6 +109,3 @@ class Comment(models.Model):
     def approve(self):
         self.approved = True
         self.save()
-
-    def get_absolute_url(self):
-        return reverse('post-detail', args=[str(self.post.id)])
