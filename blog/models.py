@@ -34,6 +34,7 @@ class Post(models.Model):
 class User(models.Model):
     name = models.CharField(max_length=100, help_text='Username')
     email = models.EmailField(max_length=100, help_text='User email')
+    bio = models.TextField(blank=True, help_text='User bio')
     created_at = models.DateTimeField(auto_now_add=True)
 
     ROLES = (
