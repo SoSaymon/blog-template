@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ author.get_username }}{% endblock %}
+
+{% block content %}
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">{{ author.get_username }}</h1>
+        <p class="text-gray-600 mb-4">{{ author.get_email }}</p>
+        <p class="text-gray-500 mb-2">Role: {{ author.get_role }}</p>
+        <p class="text-gray-500 mb-2">Bio: {{ author.get_bio }}</p>
+    </div>
+{% endblock %}

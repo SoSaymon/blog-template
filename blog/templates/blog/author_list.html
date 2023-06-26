@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base_generic.html" %}
+
+{% block title %}All Authors{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-6">All Authors</h1>
+    <ul class="space-y-6">
+        {% if authors %}
+        {% for author in authors %}
+            <li>
+                <h2 class="text-xl font-semibold"><a href="{{ author.get_absolute_url }}">{{ author.get_username }}</a></h2>
+                <p class="text-gray-600">{{ author.get_email }}</p>
+                <p class="text-gray-500">Role: {{ author.get_role }}</p>
+                <p class="text-gray-500">Bio: {{ author.get_bio }}</p>
+            </li>
+        {% endfor %}
+        {% else %}
+            <p>No authors have been added yet.</p>
+        {% endif %}
+    </ul>
+{% endblock %}
