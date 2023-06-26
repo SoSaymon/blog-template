@@ -15,6 +15,7 @@
         <a href="/" class="text-lg font-semibold">My Blog</a>
         <ul class="flex space-x-4">
             <li><a href="{% url 'posts' %}" class="hover:text-gray-400">All posts</a></li>
+            <li><a href="{% url 'authors' %}" class="hover:text-gray-400">All authors</a></li>
             {% if user.is_authenticated %}
                 <li class="flex items-center">
                     <span class="mr-2">{{ user.get_username }}</span>
