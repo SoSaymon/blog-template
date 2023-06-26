@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 from django.db import models
+from django.urls import reverse
 
 
 class CustomUserManager(UserManager):
@@ -67,6 +68,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username or self.email.split('@')[0]
+
+    def get_absolute_url(self):
+        if self.role == 'author':
+            return reverse('author-detail', args=[str(self.pk)])
+        else:
+            # TODO: Add user detail view for admins and moderators only
+            pass
 
     # SETTERS
     def set_username(self, username):
