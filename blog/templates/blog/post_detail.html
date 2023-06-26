@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">{{ post.title }}</h1>
+        <h2 class="text-xl text-gray-600 mb-4">By {{ post.author }}</h2>
+        <p class="text-gray-500 mb-2">{{ post.date|date:"F j, Y" }}</p>
+        <p class="text-gray-500 mb-2">Category: {{ post.category }}</p>
+        <p class="text-gray-500 mb-2">Tags: {{ post.tags }}</p>
+        <p class="mb-8">{{ post.content|linebreaks }}</p>
+        <div>
+            <h3 class="text-xl font-bold mb-4">Comments</h3>
+            {% for comment in post.comments.all %}
+                <div class="mb-4">
+                    <p class="text-gray-500 mb-2">{{ comment.author }}</p>
+                    <p class="text-gray-500 mb-2">{{ comment.date|date:"F j, Y" }}</p>
+                    <p class="mb-2">{{ comment.text|linebreaks }}</p>
+                </div>
+            {% empty %}
+                <p>There are no comments yet.</p>
+            {% endfor %}
+        </div>
+        <hr>
+        <a href="{% url 'index' %}">Back to blog index</a>
+    </div>
+{% endblock %}

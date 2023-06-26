@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base_generic.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-6">Latest Blog Posts</h1>
+    <ul>
+        {% if posts %}
+            {% for post in posts %}
+                <li class="mb-4">
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    <p class="text-sm text-gray-600">Written by {{ post.author }} on {{ post.created_at|date:"F d, Y" }}</p>
+                    <p class="mt-2">{{ post.body|truncatewords:30 }}</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>There are no blog posts yet.</p>
+        {% endif %}
+    </ul>
+{% endblock %}

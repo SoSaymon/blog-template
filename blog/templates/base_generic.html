@@ -1,10 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dist.css' %}">
+</head>
+
+<body class="bg-gray-100">
+<nav class="bg-gray-800 py-4 px-6 text-white">
+    <div class="container mx-auto flex justify-between">
+        <a href="/" class="text-lg font-semibold">My Blog</a>
+        <ul class="flex space-x-4">
+            <li><a href="{% url 'posts' %}" class="hover:text-gray-400">All posts</a></li>
+            {% if user.is_authenticated %}
+                <li class="flex items-center">
+                    <span class="mr-2">{{ user.get_username }}</span>
+
+                    <a href="" class="hover:text-gray-400">Profile</a>
+                    <a href="" class="hover:text-gray-400">Logout</a>
+                    {% if user.is_staff %}
+                        <a href="" class="hover:text-gray-400">All my posts</a>
+                    {% endif %}
+                </li>
+            {% else %}
+                <li><a href="" class="hover:text-gray-400">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<main class="container mx-auto py-8 px-6">
+    <!-- Blog content goes here -->
+    {% block content %}{% endblock %}
+
+    <!-- Pagination -->
+    {% block pagination %}
+        {% if is_paginated %}
+            <div class="pagination mt-8">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="text-blue-500 hover:text-blue-700">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="text-blue-500 hover:text-blue-700">next</a>
+                {% endif %}
+            </span>
+            </div>
+        {% endif %}
+    {% endblock %}
+</main>
+
+<footer class="bg-gray-800 py-4 px-6 text-white mt-8">
+    <div class="container mx-auto">
+        <p class="text-center">© 2023 My Blog. All rights reserved.</p>
+    </div>
+</footer>
 </body>
+
 </html>
