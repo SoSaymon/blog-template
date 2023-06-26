@@ -12,7 +12,3 @@ admin.site.register(User)
 admin.site.site_header = 'Blog Admin'
 admin.site.site_title = 'Blog Admin'
 admin.site.index_title = 'Blog Admin'
-
-
-
-
