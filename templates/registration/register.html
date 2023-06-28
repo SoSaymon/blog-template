@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <div class="max-w-md mx-auto">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-4">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="mb-4">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="mb-4">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+            <div class="mb-4">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Register</button>
+        </form>
+    </div>
+{% endblock %}
