@@ -14,14 +14,25 @@
             <h3 class="text-xl font-bold mb-4">Comments</h3>
             {% for comment in post.comments.all %}
                 <div class="mb-4">
-                    <p class="text-gray-500 mb-2">{{ comment.author }}</p>
-                    <p class="text-gray-500 mb-2">{{ comment.date|date:"F j, Y" }}</p>
-                    <p class="mb-2">{{ comment.text|linebreaks }}</p>
+                    <p class="mb-2">{{ comment.content|linebreaks }}</p>
+                    <p class="text-gray-500 mb-2">{{ comment.author }} {{ comment.created_at|date:"F j, Y" }}</p>
+                    <p class="text-gray-500 mb-2"></p>
                 </div>
             {% empty %}
                 <p>There are no comments yet.</p>
             {% endfor %}
         </div>
+        {% if user.is_authenticated %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="flex">
+                    {{ comment_form }}
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded" type="submit">Add comment <i class="fas fa-comments"></i></button>
+                </div>
+            </form>
+        {% else %}
+            <a class="text-blue-500 hover:text-blue-700" href="{% url 'login' %}?next={{request.path}}">Log in to add a comment!</a><br>
+        {% endif %}
         <hr>
         <a href="{% url 'index' %}">Back to blog index</a>
     </div>
