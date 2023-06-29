@@ -18,16 +18,18 @@
             <li><a href="{% url 'authors' %}" class="hover:text-gray-400">All authors</a></li>
             {% if user.is_authenticated %}
                 <li class="flex items-center">
-                    <span class="mr-2">{{ user.get_username }}</span>
+                <span class="mr-2 font-bold">|</span>
+                    <span class="mr-2">Welcome back,</span>
+                    <span class="mr-2 font-bold">{{ user.get_username }}</span>
 
-                    <a href="" class="hover:text-gray-400">Profile</a>
-                    <a href="" class="hover:text-gray-400">Logout</a>
-                    {% if user.is_staff %}
+                    <a href="" class="hover:text-gray-400 mr-2">Profile</a>
+                    <a href="{% url 'logout' %}" class="hover:text-gray-400 mr-2">Logout</a>
+                    {% if user.get_role == 'author' %}
                         <a href="" class="hover:text-gray-400">All my posts</a>
                     {% endif %}
                 </li>
             {% else %}
-                <li><a href="" class="hover:text-gray-400">Login</a></li>
+                <li><a href="{% url 'login' %}" class="hover:text-gray-400">Login</a></li>
             {% endif %}
         </ul>
     </div>

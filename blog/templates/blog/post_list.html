@@ -10,7 +10,7 @@
             <li>
                 <h2 class="text-xl font-semibold"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                 <p class="text-gray-600">{{ post.author }} | {{ post.updated_at }}</p>
-                <p>{{ post.content }}</p>
+                <p class=" mt-2">{{ post.content|truncatewords:100|safe }} <a class="font-bold" href="{{ post.get_absolute_url }}">view more</a></p>
                 <p class="text-gray-500 mt-2">Tags: {{ post.display_tags }}</p>
             </li>
         {% endfor %}
