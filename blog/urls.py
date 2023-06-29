@@ -8,5 +8,6 @@ urlpatterns = [
     path('authors/', views.AuthorListView.as_view(), name='authors'),
     path('author/<int:pk>/', views.AuthorDetailView.as_view(), name='author-detail'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('profile/edit/', views.EditProfileView.as_view(), name='edit-profile'),
     path('profile/all_posts/', views.AllMyPostsView.as_view(), name='all-posts'),
 ]

@@ -661,6 +661,10 @@ video {
   display: none;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }

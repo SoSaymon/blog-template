@@ -14,6 +14,6 @@
             <li><span class="font-bold">Joined:</span> {{ user.created_at }}</li>
             <li><a href="{% url 'password_change' %}" class="text-blue-500 hover:text-blue-700">Change password</a></li>
         </ul>
-        <a href="" class="block mt-4 text-blue-500 hover:text-blue-700">Edit Profile</a>
+        <a href="{% url 'edit-profile' %}" class="block mt-4 text-blue-500 hover:text-blue-700">Edit Profile</a>
     </div>
 {% endblock %}
