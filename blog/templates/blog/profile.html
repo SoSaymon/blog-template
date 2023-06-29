@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Profile {{ user.username }}{% endblock %}
+
+{% block content %}
+    <div class="max-w-md mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Hello {{ user.username }}</h1>
+        <p>Here is your profile:</p>
+        <ul class="list-disc ml-6 mt-4">
+            <li><span class="font-bold">Username:</span> {{ user.username }}</li>
+            <li><span class="font-bold">Email:</span> {{ user.email }}</li>
+            <li><span class="font-bold">Bio:</span> {{ user.bio }}</li>
+            <li><span class="font-bold">Role:</span> {{ user.get_role_display }}</li>
+            <li><span class="font-bold">Joined:</span> {{ user.created_at }}</li>
+            <li><a href="{% url 'password_change' %}" class="text-blue-500 hover:text-blue-700">Change password</a></li>
+        </ul>
+        <a href="" class="block mt-4 text-blue-500 hover:text-blue-700">Edit Profile</a>
+    </div>
+{% endblock %}

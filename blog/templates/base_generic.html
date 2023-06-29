@@ -22,7 +22,7 @@
                     <span class="mr-2">Welcome back,</span>
                     <span class="mr-2 font-bold">{{ user.get_username }}</span>
 
-                    <a href="" class="hover:text-gray-400 mr-2">Profile</a>
+                    <a href="{% url 'profile' %}" class="hover:text-gray-400 mr-2">Profile</a>
                     <a href="{% url 'logout' %}" class="hover:text-gray-400 mr-2">Logout</a>
                     {% if user.get_role == 'author' %}
                         <a href="{% url 'all-posts' %}" class="hover:text-gray-400">All my posts</a>
