@@ -7,6 +7,26 @@
     <title>{% block title %}My Blog{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/dist.css' %}">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex-grow: 1;
+        }
+
+        .footer {
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">
@@ -18,7 +38,7 @@
             <li><a href="{% url 'authors' %}" class="hover:text-gray-400">All authors</a></li>
             {% if user.is_authenticated %}
                 <li class="flex items-center">
-                <span class="mr-2 font-bold">|</span>
+                    <span class="mr-2 font-bold">|</span>
                     <span class="mr-2">Welcome back,</span>
                     <span class="mr-2 font-bold">{{ user.get_username }}</span>
 
@@ -35,7 +55,7 @@
     </div>
 </nav>
 
-<main class="container mx-auto py-8 px-6">
+<main class="content container mx-auto py-8 px-6">
     <!-- Blog content goes here -->
     {% block content %}{% endblock %}
 
@@ -59,7 +79,7 @@
     {% endblock %}
 </main>
 
-<footer class="bg-gray-800 py-4 px-6 text-white mt-8">
+<footer class="footer bg-gray-800 py-4 px-6 text-white">
     <div class="container mx-auto">
         <p class="text-center">© 2023 My Blog. All rights reserved.</p>
     </div>
