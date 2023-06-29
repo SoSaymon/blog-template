@@ -135,13 +135,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # METHODS
     def is_admin(self):
-        return self.role == 'admin'
+        return True if self.role == 'admin' else False
 
     def is_moderator(self):
-        return self.role == 'moderator'
+        return True if self.role == 'moderator' else False
 
     def is_author(self):
-        return self.role == 'author'
+        return True if self.role == 'author' else False
 
     def is_user(self):
-        return self.role == 'user'
+        return True if self.role == 'user' else False
