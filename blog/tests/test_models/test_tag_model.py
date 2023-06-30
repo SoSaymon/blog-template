@@ -1,8 +1,7 @@
 from django.test import TestCase
-from django.urls import reverse
 
 from blog.models import Tag
-from .set_up_test_data import SetUpTestData
+from blog.tests.utils.set_up_test_data import SetUpTestData
 
 
 class TagModelTest(TestCase):
