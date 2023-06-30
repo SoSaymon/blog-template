@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
 
 from blog.forms.edit_profile import EditProfileForm
 
 
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         context = {
             'user': request.user,
@@ -12,7 +13,7 @@ class ProfileView(View):
         return render(request, 'blog/profile.html', context=context)
 
 
-class EditProfileView(View):
+class EditProfileView(LoginRequiredMixin, View):
     form_class = EditProfileForm
     template_name = 'blog/edit_profile.html'
 
