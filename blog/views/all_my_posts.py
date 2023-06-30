@@ -9,7 +9,7 @@ class AllMyPostsView(LoginRequiredMixin, PermissionRequiredMixin, generic.ListVi
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
     paginate_by = 10
-    permission_required = 'blog.create_post'
+    permission_required = 'blog.can_publish'
 
     def get_queryset(self):
         return Post.objects.filter(author=self.request.user)
