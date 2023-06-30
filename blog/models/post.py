@@ -26,3 +26,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', args=[str(self.id)])
+
+    def get_tags(self):
+        return ', '.join([t.name for t in self.tags.all()])

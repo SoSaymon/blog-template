@@ -33,3 +33,8 @@ class PostModelTest(TestCase):
         posts = Post.objects.all()
         for post in posts:
             self.assertEqual(post._meta.ordering, ['-updated_at'])
+
+    def test_post_get_tags(self):
+        posts = Post.objects.all()
+        for post in posts:
+            self.assertEqual(post.get_tags(), ', '.join([t.name for t in post.tags.all()]))
