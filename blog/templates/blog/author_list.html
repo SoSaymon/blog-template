@@ -8,10 +8,10 @@
         {% if authors %}
         {% for author in authors %}
             <li>
-                <h2 class="text-xl font-semibold"><a href="{{ author.get_absolute_url }}">{{ author.get_username }}</a></h2>
-                <p class="text-gray-600">{{ author.get_email }}</p>
-                <p class="text-gray-500">Role: {{ author.get_role }}</p>
-                <p class="text-gray-500">Bio: {{ author.get_bio }}</p>
+                <h2 class="text-xl font-semibold"><a href="{{ author.get_absolute_url }}">{{ author.username }}</a></h2>
+                <p class="text-gray-600">{{ author.email }}</p>
+                <p class="text-gray-500">Role: {{ author.get_role_display }}</p>
+                <p class="text-gray-500">Bio: {{ author.bio|truncatewords:30 }}</p>
             </li>
         {% endfor %}
         {% else %}
