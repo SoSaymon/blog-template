@@ -76,63 +76,6 @@ class User(AbstractBaseUser, PermissionsMixin):
             # TODO: Add user detail view for admins and moderators only
             pass
 
-    # SETTERS
-    def set_username(self, username):
-        self.username = username
-        self.save()
-
-    def set_email(self, email):
-        self.email = email
-        self.save()
-
-    def set_bio(self, bio):
-        self.bio = bio
-        self.save()
-
-    def set_role(self, role):
-        self.role = role
-        self.save()
-
-    def set_is_staff(self, is_staff):
-        self.is_staff = is_staff
-        self.save()
-
-    def set_is_superuser(self, is_superuser):
-        self.is_superuser = is_superuser
-        self.save()
-
-    def set_is_active(self, is_active):
-        self.is_active = is_active
-        self.save()
-
-    # GETTERS
-    def get_username(self):
-        return self.username
-
-    def get_email(self):
-        return self.email
-
-    def get_bio(self):
-        return self.bio
-
-    def get_role(self):
-        return self.role
-
-    def get_is_staff(self):
-        return self.is_staff
-
-    def get_is_superuser(self):
-        return self.is_superuser
-
-    def get_is_active(self):
-        return self.is_active
-
-    def get_created_at(self):
-        return self.created_at
-
-    def get_last_login(self):
-        return self.last_login
-
     # METHODS
     def is_admin(self):
         return True if self.role == 'admin' else False
