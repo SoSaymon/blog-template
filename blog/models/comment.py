@@ -23,40 +23,8 @@ class Comment(models.Model):
     def __str__(self):
         return self.content
 
-    # SETTERS
-    def set_content(self, content):
-        self.content = content
-        self.save()
-
-    def set_approved(self, approved):
-        self.approved = approved
-        self.save()
-
-    # GETTERS
-    def get_content(self):
-        return self.content
-
-    def get_approved(self):
-        return self.approved
-
-    def get_post(self):
-        return self.post
-
-    def get_author(self):
-        return self.author
-
-    def get_created_at(self):
-        return self.created_at
-
-    def get_updated_at(self):
-        return self.updated_at
-
     def get_absolute_url(self):
         return reverse('comment-detail', args=[str(self.pk)])
 
     def get_edit_url(self):
         return reverse('comment-edit', args=[str(self.pk)])
-
-    @staticmethod
-    def get_all_author_comments(author):
-        return Comment.objects.filter(author=author)
