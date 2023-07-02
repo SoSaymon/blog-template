@@ -29,7 +29,7 @@ SECRET_KEY = get_env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_env('DEBUG', 'False') == 'True'  # If DEBUG is not set, it will be False. When DEBUG is False, Django will not display errors in the browser and serve static files.
-ALLOWED_HOSTS = ['127.0.0.1', "localhost"]
+ALLOWED_HOSTS = ['blog-template-production.up.railway.app', '127.0.0.1', "localhost"]
 
 # Security
 SECURE_HSTS_SECONDS = 31536000
@@ -40,6 +40,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 SECURE_SSL_REDIRECT = False  # Unless your site should be available over both SSL and non-SSL connections (HTTPS and HTTP), you may want to set this to True.
+CSRF_TRUSTED_ORIGINS = ['blog-template-production.up.railway.app']
 
 # Application definition
 
