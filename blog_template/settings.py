@@ -27,9 +27,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = get_env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = get_env('DEBUG', 'False') == 'True'  # If DEBUG is not set, it will be False. When DEBUG is False, Django will not display errors in the browser and serve static files.
+ALLOWED_HOSTS = ['127.0.0.1', "localhost"]
 
-ALLOWED_HOSTS = []
+# Security
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = False  # Unless your site should be available over both SSL and non-SSL connections (HTTPS and HTTP), you may want to set this to True.
 
 # Application definition
 
@@ -144,4 +153,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # TODO: REMOVE THIS ON PRODUCTION
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # For development
